@@ -9,7 +9,7 @@ configuring the build tasks or the launch tasks. For instance you might want to 
 arguments passed along to the build or the debugger, but don't want to have to configure these
 for all your projects.
 
-Ths extension is somewhat opinionated and have been optimized for the following workflows:
+This extension is somewhat opinionated and have been optimized for the following workflows:
 
 * Be able to run the build task and select a project to build
 * Be able to launch a debugging session and select which project to launch
