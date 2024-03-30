@@ -1,0 +1,73 @@
+{
+  "name": "dotnet-build-commands",
+  "displayName": ".NET Tools",
+  "description": "Convenience build commands for .NET projects in Visual Studio Code",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "dotnet-build-commands.selectProject",
+          "when": "false"
+        },
+        {
+          "command": "dotnet-build-commands.selectProjectForLaunch",
+          "when": "false"
+        },
+        {
+          "command": "dotnet-build-commands.selectedProject",
+          "when": "false"
+        },
+        {
+          "command": "dotnet-build-commands.getTarget",
+          "when": "false"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "dotnet-build-commands.selectProject",
+        "title": "Select project typically for build, can be used in launch as well"
+      },
+      {
+        "command": "dotnet-build-commands.selectProjectForLaunch",
+        "title": "Select project typically specifically for launch configurations"
+      },
+      {
+        "command": "dotnet-build-commands.selectedProject",
+        "title": "Gets the path of the selected project"
+      },
+      {
+        "command": "dotnet-build-commands.getTarget",
+        "title": "Gets target based on selected project"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.87.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.8",
+    "@vscode/test-electron": "^2.3.9"
+  }
+}
