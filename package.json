@@ -2,7 +2,7 @@
   "name": "dotnet-build-commands",
   "displayName": ".NET Build Commands",
   "description": "Convenience build commands for .NET projects in Visual Studio Code",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "engines": {
     "vscode": "^1.87.0"
   },
@@ -79,7 +79,7 @@
     "pretest": "yarn run compile && yarn run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test",
-    "package": "vsce package --yarn --baseImagesUrl https://github.com/einari/dotnet-build-commands"
+    "package": "vsce package --yarn --baseImagesUrl https://raw.githubusercontent.com/einari/dotnet-build-commands/main"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
