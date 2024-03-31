@@ -2,14 +2,14 @@
   "name": "dotnet-build-commands",
   "displayName": ".NET Build Commands",
   "description": "Convenience build commands for .NET projects in Visual Studio Code",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "engines": {
     "vscode": "^1.87.0"
   },
   "categories": [
     "Programming Languages"
   ],
-  "tags": [
+  "keywords": [
     "dotnet",
     "C#",
     ".NET",
@@ -42,25 +42,33 @@
         {
           "command": "dotnet-build-commands.getTarget",
           "when": "false"
+        },
+        {
+          "command": "dotnet-build-commands.buildFromContext",
+          "when": "editorFocus && resourceScheme == 'file'"
         }
       ]
     },
     "commands": [
       {
         "command": "dotnet-build-commands.selectProject",
-        "title": "Select project typically for build, can be used in launch as well"
+        "title": ".NET Build: Select project typically for build, can be used in launch as well"
       },
       {
         "command": "dotnet-build-commands.selectProjectForLaunch",
-        "title": "Select project typically specifically for launch configurations"
+        "title": ".NET Build: Select project typically specifically for launch configurations"
       },
       {
         "command": "dotnet-build-commands.selectedProject",
-        "title": "Gets the path of the selected project"
+        "title": ".NET Build: Gets the path of the selected project"
       },
       {
         "command": "dotnet-build-commands.getTarget",
-        "title": "Gets target based on selected project"
+        "title": ".NET Build: Gets target based on selected project"
+      },
+      {
+        "command": "dotnet-build-commands.buildFromContext",
+        "title": ".NET Build: Start a build for nearest .csproj for the current file"
       }
     ]
   },
@@ -71,7 +79,7 @@
     "pretest": "yarn run compile && yarn run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test",
-    "package": "vsce package --yarn --baseImagesUrl https://github.com/einari/donet-build-commands/images"
+    "package": "vsce package --yarn --baseImagesUrl https://github.com/einari/dotnet-build-commands/images"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",

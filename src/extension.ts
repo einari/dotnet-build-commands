@@ -1,30 +1,9 @@
 import * as vscode from 'vscode';
-import { Project, ProjectPicker } from './ProjectPicker';
+import { Project } from './ProjectPicker';
 import { PickProjectArgs } from './PickProjectArgs';
-import { interpolateVariables } from './interpolateVariables';
 import { LaunchContext } from './LaunchContext';
-
-async function selectProject(outputChannel: vscode.OutputChannel, args: PickProjectArgs, context: vscode.ExtensionContext, launchContext: LaunchContext) {
-	const picker = new ProjectPicker(outputChannel, launchContext);
-
-	if (!args.file) {
-		vscode.window.showErrorMessage('Missing file argument');
-		return;
-	}
-
-	const file = interpolateVariables(args.file)!;
-	const result = await picker.pick(file);
-
-	if (!result) {
-		vscode.window.showErrorMessage('No project selected');
-		launchContext.clear();
-		return;
-	}
-
-	context.workspaceState.update('selectedProject', result);
-	return result?.path;
-
-}
+import { buildFromContext } from './buildFromContext';
+import { selectProject } from './selectProject';
 
 export function activate(context: vscode.ExtensionContext) {
 	const logger = vscode.window.createOutputChannel('.NET Build Commands');
@@ -53,8 +32,13 @@ export function activate(context: vscode.ExtensionContext) {
 	}));
 
 	context.subscriptions.push(vscode.commands.registerCommand('dotnet-build-commands.getTarget', async () => {
+
 		const project = context.workspaceState.get('selectedProject') as Project;
 		return project?.outputPath;
+	}));
+
+	context.subscriptions.push(vscode.commands.registerCommand('dotnet-build-commands.buildFromContext', async () => {
+		await buildFromContext();
 	}));
 }
 

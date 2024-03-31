@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 function getValueFrom(config: any, propertyToFind: string): any {
-	for (const property in Object.keys(config)) {
+	for (const property of Object.keys(config)) {
 		if (property === propertyToFind) {
 			return config[property];
 		}

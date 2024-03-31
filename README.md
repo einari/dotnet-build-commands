@@ -11,8 +11,9 @@ for all your projects.
 
 This extension is somewhat opinionated and have been optimized for the following workflows:
 
-* Be able to run the build task and select a project to build
-* Be able to launch a debugging session and select which project to launch
+* [Be able to run the build task and select a project to build](#build-tasks-and-project-selection)
+* [Be able to launch a debugging session and select which project to launch](#launch-debugger-with-project-selection)
+* [Be able to build a project in the context of the currently open file](#building-project-in-context)
 
 ## Projects.json
 
@@ -43,7 +44,7 @@ The JSON file can be shared between a `launch.json` file and a `tasks.json` file
 > Note: Paths support using the expression ${workspaceFolder}. The `outputPath` is optional. If you don't include this
 > the project will not show up in the launch list.
 
-## Tasks.json
+## Build tasks and project selection
 
 The `tasks.json` file supports the concept of `inputs`.
 This extension provides commands that can be used as inputs.
@@ -104,7 +105,7 @@ This task can easily then be mapped to keys, as you can see as a sample in follo
 
 ![](./images/rerun.png)
 
-## Launch.json
+## Launch debugger with project selection
 
 As with the `tasks.json` you can also create inputs in your `launch.json`.
 Below you'll see an example of how to use the extension:
@@ -152,3 +153,12 @@ configuration then uses the input using `${input:project}`.
 The second input `target` is configured using `dotnet-build-commands.getTarget` which resolves from the
 selected projected the `outputPath` configured. The `program` property of the
 configuration then uses the input using `${input:target}`.
+
+## Building project in context
+
+The extension exposes a command that lets you build the nearest `.csproj` for the currently focused
+file in an editor. Simply run the `.NET Build: Start a build for nearest .csproj for the current file`
+
+![](./images/build-in-context.png)
+
+If you'd like you can then map this to a keyboard shortcut. The identifier of the command is `dotnet-build-commands.buildFromContext`.
