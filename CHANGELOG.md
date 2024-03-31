@@ -1,3 +1,9 @@
+# v1.1.1 - 2024-3-31 - Build in context
+
+## Summary
+
+Fixing the image links in the documentation.
+
 # v1.1.0 - 2024-3-31 - Build in context
 
 ## Summary
