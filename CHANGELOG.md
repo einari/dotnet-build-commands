@@ -1,3 +1,9 @@
+# v1.1.3 - 2024-4-1 - Fixing images
+
+## Summary
+
+Improving the docs in the README file.
+
 # v1.1.1 & v1.1.2 - 2024-3-31 - Fixing images
 
 ## Summary
