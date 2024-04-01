@@ -9,11 +9,23 @@ configuring the build tasks or the launch tasks. For instance you might want to 
 arguments passed along to the build or the debugger, but don't want to have to configure these
 for all your projects.
 
-This extension is somewhat opinionated and have been optimized for the following workflows:
+This extension is somewhat opinionated and supports the following workflows:
 
-* [Be able to run the build task and select a project to build](#build-tasks-and-project-selection)
-* [Be able to launch a debugging session and select which project to launch](#launch-debugger-with-project-selection)
-* [Be able to build a project in the context of the currently open file](#building-project-in-context)
+* [Run a build task and select which project to build](#build-tasks-and-project-selection)
+* [Launch a debugging session and select which project to launch](#launch-debugger-with-project-selection)
+* [Build the project nearest to the current focused file](#building-project-in-context)
+
+## Commands
+
+Below are all the commands available:
+
+| Command | Description | Output |
+| ------- | ----------- | - |
+| dotnet-build-commands.selectProject | Select a project | Full path of selected project |
+| dotnet-build-commands.selectProjectForLaunch | Select a project for launch and set a variable for pre launch tasks (build) to use | Full path of selected project |
+| dotnet-build-commands.selectedProject | Get the selected project | Full path of selected project |
+| dotnet-build-commands.getTarget | Get the target / output path from the selected project | Full path of the target to launch |
+| dotnet-build-commands.buildFromContext | Build the project nearest to the current focused file | - |
 
 ## Projects.json
 
@@ -162,3 +174,6 @@ file in an editor. Simply run the `.NET Build: Start a build for nearest .csproj
 ![](./images/build-in-context.png)
 
 If you'd like you can then map this to a keyboard shortcut. The identifier of the command is `dotnet-build-commands.buildFromContext`.
+
+The command will use a build task defined in `tasks.json`. If you only have one task, it will use this.
+Otherwise it will look for the task marked as the default task.
